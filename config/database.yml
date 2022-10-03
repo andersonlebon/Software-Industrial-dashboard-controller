@@ -17,6 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -24,6 +25,7 @@ default: &default
 development:
   <<: *default
   database: ind_dashbord_development
+  port: 5435
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -82,5 +84,4 @@ test:
 production:
   <<: *default
   database: ind_dashbord_production
-  username: ind_dashbord
-  password: <%= ENV["IND_DASHBORD_DATABASE_PASSWORD"] %>
+
