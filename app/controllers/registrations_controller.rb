@@ -9,19 +9,19 @@ class RegistrationsController < Devise::RegistrationsController
                 email: user.email,
                 name: user.name,
                 role: user.role,
-                username: user.username,
                 created_at: user.created_at,
                 updated_at: user.updated_at,
                 token: user.generate_jwt
             }
             render json: resp
         else
-            render json: user.errors.messages 
+            
+            render json:  user.errors.messages.first.last.first 
         end
         
     end
 
     def user_params
-         params.require(:registration).permit(:username, :email, :password, :password_confirmation)
+         params.require(:registration).permit(:name, :email, :password, :password_confirmation)
     end
 end
